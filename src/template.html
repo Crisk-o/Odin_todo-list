@@ -10,17 +10,53 @@
         <h1>To-Do List:</h1>
     </header>
     <div id="sidebar">
-        <nav>
+
+        <div id="user-info">
+            <div id="user-avatar"><img src="#" placeholder="avatar"><p>UserName:</p></div>
             <button id="create-task-btn">Create Task</button>
+                <dialog id="task-dialog">
+                    <div id="taskFormDiv">
+                        <form id="taskForm" method="dialog">
+                            <label id="taskNameLabel" for="taskName">Task Name:</label>
+                            <input type="text" name="taskName" id="taskName" required><br>
+                            <label id="taskDescrLabel" for="taskDescr">Description:</label>
+                            <input type="text" name="taskDescr" id="taskDescr" required><br>
+                            <label id="dueDateLabel" for="dueDate">Due Date:</label>
+                            <input type="date" id="dueDate" name="dueDate"><br>
+                            <label id="taskPriorityLabel" for="taskPriority">Priority Level (1-5):</label>
+                            <input type="number" id="taskPriority" name="taskPriority" min="1" max="5"><br> 
+                            <label for="taskNotes">Notes:</label>
+                            <input type="text" id="taskNotes" name="taskNotes"><br>
+                            <label id="taskFormSubmitLabel" for="taskFormSubmit"></label>
+                            <button type="submit" id="taskFormSubmit" name="taskFormSubmit">create to-do</button>
+                        </form>
+                    </div>
+                </dialog>
+        </div>
+
+        <div id="projects-sidebar-div">
+            
+            <h2>My Projects</h2>
             <button id="create-project-btn">Create a Project</button>
-            <button id="view-all-btn">View All Projects</button>
-        </nav>
-        <div id="projects-view">
-            <!-- add projects here w/ DOM-->
+            <button id="view-projects-btn">View All Projects</button>
+                <dialog id="project-dialog">
+                    <div id="projectFormDiv">
+                        <form id="projectForm" method="dialog">
+                            <label id="projectNameLabel" for="projectName">Task Name:</label>
+                            <input type="text" name="taskName" required><br>
+                            <label id="projectDescrLabel" for="projectDescr">Description:</label>
+                            <input type="text" name="projectDescr" required><br>
+                            <label id="projectFormSubmitLabel" for="projectFormSubmit"></label>
+                            <button type="submit" id="taskFormSubmit" name="projectFormSubmit">Create Project</button>
+                        </form>
+                    </div>
+                </dialog>
+            <div id="defaultProject">
+                <!-- add default tasks here -->
+            </div>
         </div>
     </div>
     <div id="content">
-   
         <!-- Add default 'project' where they add all of the todos-->
     </div>
 </body>

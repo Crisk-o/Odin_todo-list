@@ -1,3 +1,5 @@
+/* This file has code for classes of todoItem and project */
+
 import "./styles.css";
 
 // have user fill in a form to get values to create toDoItem
@@ -9,7 +11,7 @@ export class toDoItem {
         this.dueDate = dueDate;
         this.priority = priority;
         this.notes = notes;
-        let status = "incomplete";
+        this.status = "incomplete";
     }
 };
 export class project {
