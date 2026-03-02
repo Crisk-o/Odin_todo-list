@@ -8,6 +8,7 @@ color-palette
 bluepurplepinkgradientcoldlight
 */
 body {
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: 20% 80%;
     grid-template-rows: repeat(33%, fill);
@@ -26,6 +27,7 @@ header{
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.267);
 }
 #content {
+    box-sizing: border-box;
     display: flex;
     grid-column-start: 2;
     border: 1px solid black;
@@ -36,6 +38,7 @@ header{
     
 }
 #sidebar{
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     grid-column: 1/1;
@@ -49,36 +52,53 @@ header{
 #user-info{
     display: flex;
     flex-direction: column;
-    
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+    width: 100%;   
+    border-bottom: 1px solid black; 
 }
-#user-avatar {
+#user-info-name_avatar {
+    box-sizing: border-box;
     display: flex;
+    justify-self: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
 
 }
+#user-info-name_avatar > p {
+    font-size: 18px;
+}
+
 #projects-sidebar-div{
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 1px solid black;
-    height: fit-content;
+    height: 80%;
     width: 100%;
 }
 .projectCard {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     border: 1px solid black;
     width: 100%;
     height: 50%;
-    
+
 }
 #taskForm {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
 
 }
 
 .taskCard{
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;

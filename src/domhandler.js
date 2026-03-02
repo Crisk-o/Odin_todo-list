@@ -1,5 +1,8 @@
 import { toDoItem, project } from "./tasks.js";
+import avatar from "./resources/avatar.svg"
 
+const userAvatar = document.getElementById('avatar');
+userAvatar.src = avatar;
 const contentDiv = document.getElementById('content');
 // used for creating to-do items. Gets values from form and creates a 'task card'
 export function createTask(){
@@ -68,7 +71,7 @@ function createProjectCard(project){
     const projectContainer = document.createElement('div');
     projectContainer.classList.add("projectCard")
     const projectName = document.createElement('p');
-    projectName.textContent = "Project Title: " + project.title;
+    projectName.textContent = "Project Title: " + project.projectName;
     const projectDescr = document.createElement('p');
     projectDescr.textContent = "Description: " + project.descr;
 
