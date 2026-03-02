@@ -11,9 +11,7 @@ export class toDoItem {
         this.notes = notes;
         let status = "incomplete";
     }
-
 };
-
 export class project {
     constructor(projectName, descr){
         const toDoArray = [];
