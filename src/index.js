@@ -20,6 +20,14 @@ createTaskBtn.addEventListener('click', () => {
     taskForm.addEventListener('submit', createTask);
 });
 
+const projectDialog = document.getElementById('project-dialog');
+const projectForm = document.getElementById('projectForm');
+const createProjectBtn = document.getElementById('create-project-btn');
+createProjectBtn.addEventListener('click', () =>{
+    projectDialog.showModal();
+    projectForm.addEventListener('submit', createProject);
+});
+
 
 
 

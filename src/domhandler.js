@@ -1,11 +1,6 @@
 import { toDoItem, project } from "./tasks.js";
 
 const contentDiv = document.getElementById('content');
-const createTaskBtn = document.getElementById('create-task-btn');
-const createProjectBtn = document.getElementById('create-project-btn');
-const taskForm = document.getElementById('taskForm');
-const formDialog = document.getElementById('task-dialog');
-
 // used for creating to-do items. Gets values from form and creates a 'task card'
 export function createTask(){
     const taskName = document.getElementById('taskName');
@@ -20,7 +15,6 @@ export function createTask(){
 }
 //helper funtion for createTask
 function createTaskCard(toDoItem){
-// function createTaskCard(taskName, taskDescr, taskDate, taskPriority, taskNotes){
     const taskContainer = document.createElement('div');
     taskContainer.classList.add('taskCard');
     const cardTitle = document.createElement('p');
@@ -52,56 +46,42 @@ function createTaskCard(toDoItem){
     const deleteTaskBtn = document.createElement('button');
     deleteTaskBtn.textContent = "Delete Task";
     deleteTaskBtn.addEventListener('click', () => {
-        this.parentNode.remove();
+        taskContainer.remove();
     });
    
-    
     taskContainer.append(cardTitle, cardDescr, cardDate, cardPriority, cardNotes, cardStatus, statusChangeBtn, deleteTaskBtn);
     contentDiv.append(taskContainer);
 }
 
 export function createProject() {
     // creates project dialog/form/container
-    const projectDialog = document.createElement('dialog');
-    const projectFormContainer = document.createElement('div');
-    projectFormContainer.id = "project-form-container";
-    const projectForm = document.createElement('form');
-    projectForm.method = "dialog";
-    projectForm.id = "projectForm";
+    const projectTitle = document.getElementById('projectName');
+    const projectDescr = document.getElementById('projectDescr');
 
-    // create each input
-    const projectNameLabel = document.createElement('label');
-    projectNameLabel.for = "projectNameInput";
-    const projectNameInput = document.createElement('input');
-    projectNameInput.name = "projectNameInput";
-    projectNameInput.id = "projectNameInput";
-    projectNameInput.type = "text";
+    const newProject = new project(projectTitle.value, projectDescr.value);
 
-    const projectDescrLabel = document.createElement('label');
-    projectDescrLabel.for = "projectDescrInput";
-    const projectDescrInput = document.createElement('input');
-    projectDescrInput.name = "projectDescrInput";
-    projectDescrInput.id = "projectDescrInput";
-    projectDescrInput.type = "text";
+    createProjectCard(newProject);
+}
+function createProjectCard(project){
+    // for appending at end
+    const projectsSidebarDiv = document.getElementById('projects-sidebar-div');
+    const projectContainer = document.createElement('div');
+    projectContainer.classList.add("projectCard")
+    const projectName = document.createElement('p');
+    projectName.textContent = "Project Title: " + project.title;
+    const projectDescr = document.createElement('p');
+    projectDescr.textContent = "Description: " + project.descr;
 
-    const projectFormSubmitLabel = document.createElement('label');
-    projectFormSubmitLabel.for = "submitBtn";
-    const projectFormSubmitBtn = document.createElement('button');
-    projectFormSubmitBtn.name = "submitBtn";
-    projectFormSubmitBtn.type = "submit";
-
-
-    projectForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        projectDialog.close();
-
-    } )
-    createProjectBtn.addEventListener('click', () => {
-        projectDialog.openModal();
+    const addTaskBtn = document.createElement('button');
+    addTaskBtn.textContent = "Add Task to Project";
+    addTaskBtn.addEventListener('click', () => {
+        project.addTask(newTask);
     })
-
-    projectForm.append(projectNameLabel, projectNameInput, projectDescrLabel, projectDescrInput, projectFormSubmitLabel, projectFormSubmitBtn);
-    projectDialog.append(projectForm);
-    projectFormContainer.append(projectDialog);
-    contentDiv.append(projectFormContainer)
+    const deleteProjectBtn = document.createElement('button');
+    deleteProjectBtn.textContent = "Delete Project";
+    deleteProjectBtn.addEventListener('click', () => {
+        projectContainer.remove();
+    })
+    projectContainer.append(projectName, projectDescr, addTaskBtn, deleteProjectBtn);
+    projectsSidebarDiv.append(projectContainer);
 }

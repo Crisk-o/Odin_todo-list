@@ -16,7 +16,7 @@ export class toDoItem {
 };
 export class project {
     constructor(projectName, descr){
-        const toDoArray = [];
+        this.toDoArray = [];
         this.projectName = projectName;
         this.descr = descr;
     }
