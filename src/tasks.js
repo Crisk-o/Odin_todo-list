@@ -16,13 +16,14 @@ export class toDoItem {
 };
 export class project {
     constructor(projectName, descr){
-        this.toDoArray = [];
+        const id = crypto.randomUUID();
+        this.taskArray = [];
         this.projectName = projectName;
         this.descr = descr;
     }
     // DO NOT NEED 'function' keyword. It is implied that this is a method since it is in a class.
     addTask(toDoItem){
-        toDoArray.push(toDoItem);
+        this.taskArray.push(toDoItem);
     };
 
     removeTask(toDoItem){ // send COMPLETED tasks to an archive and send tasks made in error to garbage.

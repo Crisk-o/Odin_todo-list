@@ -1,31 +1,23 @@
 import "./styles.css";
 import { toDoItem, project } from "./tasks.js";
-import { createTask, createProject} from "./domhandler.js";
+import { createTask, createProject, defaultProjectCard, defaultProjectSideCard} from "./domhandler.js";
 
-// testing here
-const defaultProject = new project('work', 'these are the things I have to do for work today');
-const newItem = new toDoItem('get money', 'b', '01/01/2019', '1', 'none');
-////
+// testing a def project here
+const defaultProjectDiv = document.getElementById('defProjContainer');
+const projectsSidebarDiv = document.getElementById('projects-sidebar-div');
+defaultProjectDiv.append(defaultProjectSideCard);
 
-const contentDiv = document.getElementById('content'); // this will display the project and it's todo items.
-const projectsDiv = document.getElementById('current-projects-div');
-
-
-// grab createTaskBtn and attach event listener 
-const taskDialog = document.getElementById('task-dialog');
-const taskForm = document.getElementById('taskForm');
-const createTaskBtn = document.getElementById('create-task-btn');
-createTaskBtn.addEventListener('click', () => { 
-    taskDialog.showModal(); 
-    taskForm.addEventListener('submit', createTask);
-});
 
 const projectDialog = document.getElementById('project-dialog');
 const projectForm = document.getElementById('projectForm');
 const createProjectBtn = document.getElementById('create-project-btn');
 createProjectBtn.addEventListener('click', () =>{
     projectDialog.showModal();
-    projectForm.addEventListener('submit', createProject);
+    projectForm.addEventListener('submit', () => { 
+        const [newProjectCard, newProjectSidebarCard] = createProject();
+        projectsSidebarDiv.append(newProjectSidebarCard);
+        
+    });
 });
 
 
