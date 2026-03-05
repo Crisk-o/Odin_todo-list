@@ -6,7 +6,6 @@ const contentDiv = document.getElementById('content');
 // testing a def project here
 const defaultProjectDiv = document.getElementById('defProjContainer');
 contentDiv.append(defaultProjectCard);
-const projectsSidebarDiv = document.getElementById('projects-sidebar-div');
 defaultProjectDiv.append(defaultProjectSideCard);
 
 

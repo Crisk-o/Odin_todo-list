@@ -27,12 +27,12 @@ export class project {
     };
 
     removeTask(toDoItem){ // send COMPLETED tasks to an archive and send tasks made in error to garbage.
-        if(this.taskArray.includes(toDoItem.name)){
             const index = this.taskArray.indexOf(toDoItem);
             this.taskArray.splice(index, 1); // will remove item at the found index.
-        }
-        else{
-            alert("Task not found");
-        }
+    
     };
+    printTaskList(){
+        for(let i = 0; i < this.taskArray.length; i++)
+            this.taskArray[i];
+    }
 };
