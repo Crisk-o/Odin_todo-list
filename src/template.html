@@ -20,7 +20,7 @@
                     <div id="taskFormDiv">
                         <form id="taskForm" method="dialog">
                             <label id="taskNameLabel" for="taskName">Task Name:</label>
-                            <input type="text" name="taskName" id="taskName" required><br>
+                            <input type="text" name="taskName" id="taskName" placeholder="Fix website..."required><br>
                             <label id="taskDescrLabel" for="taskDescr">Description:</label>
                             <input type="text" name="taskDescr" id="taskDescr"><br>
                             <label id="dueDateLabel" for="dueDate">Due Date:</label>
@@ -35,19 +35,19 @@
                     </div>
                 </dialog>
         </div>
-
-        <div id="projects-sidebar-div">
-            
+        <div id = "sidebar-actions">
             <h2>My Projects</h2>
             <button id="create-project-btn">Create a Project</button>
             <button id="view-projects-btn">View All Projects</button>
+        </div>
+        <div id="projects-sidebar-div">
                 <dialog id="project-dialog">
                     <div id="projectFormDiv">
                         <form id="projectForm" method="dialog">
                             <label id="projectNameLabel" for="projectName">Project Name: </label>
-                            <input type="text" name="projectName" id="projectName" required><br>
-                            <label id="projectDescrLabel" for="projectDescr">Description:</label>
-                            <input type="text" name="projectDescr" id="projectDescr" required><br>
+                            <input type="text" name="projectName" id="projectName" placeholder="Groceries..." required><br>
+                            <label id="projectDescrLabel" for="projectDescr" >Description:</label>
+                            <input type="text" name="projectDescr" id="projectDescr" placeholder="Describe your project" required><br>
                             <label id="projectFormSubmitLabel" for="projectFormSubmit"></label>
                             <button type="submit" id="projectFormSubmit" name="projectFormSubmit">Create Project</button>
                         </form>
