@@ -22,14 +22,14 @@ export class project {
         this.descr = descr;
     }
     // DO NOT NEED 'function' keyword. It is implied that this is a method since it is in a class.
-    addTask(toDoItem){
-        this.taskArray.push(toDoItem);
+    addTask(task){
+        this.taskArray.push(task);
     };
 
     removeTask(toDoItem){ // send COMPLETED tasks to an archive and send tasks made in error to garbage.
-        if(toDoArray.includes(toDoItem.name)){
-            const index = toDoArray.indexOf(toDoItem);
-            toDoArray.splice(index, 1); // will remove item at the found index.
+        if(this.taskArray.includes(toDoItem.name)){
+            const index = this.taskArray.indexOf(toDoItem);
+            this.taskArray.splice(index, 1); // will remove item at the found index.
         }
         else{
             alert("Task not found");
