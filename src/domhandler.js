@@ -28,6 +28,14 @@ export function createTask(){
     
     const newTask = new toDoItem(taskName.value, taskDescr.value, taskDate.value, taskPriority.value, taskNotes.value);
     const taskCard = createTaskCard(newTask);
+    
+    const deleteTaskBtn = document.createElement('button');
+    deleteTaskBtn.textContent = "Delete Task";
+    deleteTaskBtn.addEventListener('click', () => {
+        currentProject.removeTask(taskCard);
+    });
+    taskCard.append(deleteTaskBtn);
+   
     return taskCard;
 }
 //helper function for creating task. returns task container to be appended to project
@@ -61,14 +69,17 @@ function createTaskCard(toDoItem){
         }
     })
 
-    const deleteTaskBtn = document.createElement('button');
-    deleteTaskBtn.textContent = "Delete Task";
-    deleteTaskBtn.addEventListener('click', () => {
-        taskContainer.remove();
-        currentProject.removeTask(this)
-    });
+    // const deleteTaskBtn = document.createElement('button');
+    // deleteTaskBtn.textContent = "Delete Task";
+    // // THIS IS CURRENTLY ONLY REMOVING THE LAST ITEM ADDED
+    // deleteTaskBtn.addEventListener('click', () => {
+    //     if(currentProject.taskArray.contains(toDoItem))
+    //         currentProject.removeTask(toDoItem)
+    // });
    
-    taskContainer.append(cardTitle, cardDescr, cardDate, cardPriority, cardNotes, cardStatus, statusChangeBtn, deleteTaskBtn);
+    // taskContainer.append(cardTitle, cardDescr, cardDate, cardPriority, cardNotes, cardStatus, statusChangeBtn, deleteTaskBtn);
+    taskContainer.append(cardTitle, cardDescr, cardDate, cardPriority, cardNotes, cardStatus, statusChangeBtn);
+
     return taskContainer;
 }
 

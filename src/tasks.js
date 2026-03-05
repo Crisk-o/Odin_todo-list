@@ -26,10 +26,9 @@ export class project {
         this.taskArray.push(task);
     };
 
-    removeTask(toDoItem){ // send COMPLETED tasks to an archive and send tasks made in error to garbage.
-            const index = this.taskArray.indexOf(toDoItem);
+    removeTask(task){ // send COMPLETED tasks to an archive and send tasks made in error to garbage.
+            const index = this.taskArray.indexOf(task);
             this.taskArray.splice(index, 1); // will remove item at the found index.
-    
     };
     printTaskList(){
         for(let i = 0; i < this.taskArray.length; i++)
