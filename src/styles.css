@@ -20,9 +20,11 @@ body {
     display: grid;
     grid-template-columns: 20% 80%;
     grid-template-rows: repeat(33%, fill);
-    background-color: antiquewhite;
+    background-image: radial-gradient(#FFDBFD, #C9BEFF);
     padding: 0;
     margin: 0;   
+    height: 100%;
+    overflow: hidden;
 }
 header{
     justify-content: center;
@@ -40,7 +42,6 @@ header{
     display: flex;
     grid-column-start: 2;
     border: 1px solid black;
-    background-color: #FFDBFD;
     height: calc(100vh - 50px);
     width: 100%;
     justify-content: center;
@@ -86,7 +87,6 @@ header{
     font-size: 18px;
 }
 #defProjContainer{
-    background-color: #FFFAD0;
     margin-top: 25px;
     border-radius: 25px;
     height: 200px;
@@ -101,6 +101,7 @@ header{
     width: 100%;
     overflow: hidden;
 }
+/*this is the card in sidebar */
 .projectCard {
     box-sizing: border-box;
     display: flex;
@@ -111,12 +112,8 @@ header{
     width: 100%;
     padding: 10px;
     height: 200px;
+    font-size: 18px;
     background-color: #C9BEFF;
-}
-.projectCard > p {
-    margin: auto;
-    padding: 5px;
-    font-weight: 100;
 }
 .projectCardDetailed {
     height: 100%;
@@ -130,41 +127,87 @@ header{
 #projectArrayContainer {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
-    margin: auto;
-    align-items: center;
-    justify-content: center;
+    grid-template-rows: repeat(fit, fill);
     width: 100%;
+    margin: auto;
     height: calc(100vh - 50px); 
-    background-color: lightpink;
+    padding: 20px;
 }
 #taskForm {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-
+    
+    width: 100%;
 }
+
 
 .taskCard{
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    margin: auto;
     font-size: 18px;
-    gap: 10px;
     border: 1px solid black;
-    width: 50%;
+    width: 80%;
     height: 100px;
-    max-height: 500px;
-    background-color: #8494FF;
+    max-height: 300px;
+    gap: 50px;
+    background-color: #bae1ff;
     padding: 10px;
     overflow: hidden;
+}
+/* used for task cards 'quick view' (Before expanding)*/
+.interiorContainer{
+    display: flex;
+}
+.interiorContainerText{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    width: 100%;
+}
+.interiorContainerText > p{
+    padding: 0;
+    margin: 0;
 }
 .taskCard > p {
     padding: 0;
     margin: 0;
 }
 .expandTaskCard{
-    display: flex;
     height: 300px;
+}
+#taskExpandedDetails{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+}
+#taskExpandedDetails > p {
+    margin: 0;
+    padding: 0;
+}
+
+#statusChangeBtn{
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+}
+
+/* priority color codes below. Scale is 1 (can push back) - 5 (do now)*/
+.priorityOne{ 
+    background-color: 	#bae1ff;
+}
+.priorityTwo {
+    background-color: #baffc9;
+}
+.priorityThree {
+    background-color: #ffffba;
+}
+.priorityFour {
+    background-color:  	#ffdfba;
+}
+.priorityFive {
+    background-color: #ffb3ba;
 }

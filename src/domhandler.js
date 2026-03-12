@@ -47,34 +47,76 @@ function createTaskCard(toDoItem){
 
     const cardTitle = document.createElement('p');
     cardTitle.textContent = "Title: " + toDoItem.title;
+    cardTitle.style.fontSize = "24px";
+
     const cardDescr = document.createElement('p');
-    cardDescr.textContent = "Description: " + toDoItem.descr;
+    cardDescr.textContent = toDoItem.descr;
 
     const expandTaskBtn = document.createElement('button');
     expandTaskBtn.textContent = "Expand Task"
     expandTaskBtn.addEventListener('click', () => {
-
+        taskContainer.classList.toggle("expandTaskCard");
     });
 
     const cardDate = document.createElement('p');
-    cardDate.textContent = "Due By: " + toDoItem.dueDate;
+    if(toDoItem.dueDate == ""){
+        let today = new Date();
+        toDoItem.dueDate = today.toLocaleString();
+    }
+    cardDate.textContent = "Due: " + toDoItem.dueDate;
+
     const cardPriority = document.createElement('p');
-    cardPriority.textContent = "Priority: " + toDoItem.priority;
+    if(toDoItem.priority == 2){
+        taskContainer.classList.add("priorityTwo");
+    }
+    else if(toDoItem.priority == 3){
+        taskContainer.classList.add("priorityThree");
+    }
+    else if(toDoItem.priority == 4){
+        taskContainer.classList.add("priorityFour");
+    }
+    else if(toDoItem.priority == 5){
+        taskContainer.classList.add("priorityFive");
+    }
+    cardPriority.textContent = "Priority Level: " + toDoItem.priority;
+
     const cardNotes = document.createElement('p');
     cardNotes.textContent = "Notes: " + toDoItem.notes;
     const cardStatus = document.createElement('p');
     cardStatus.textContent = "Status: " + toDoItem.status;
 
-    const statusChangeBtn = document.createElement('button');
-    statusChangeBtn.textContent = "Mark as complete";
-    statusChangeBtn.addEventListener('click', () => {
-        if(toDoItem.status === "incomplete"){
+    const statusChangeBtn = document.createElement('input');
+    statusChangeBtn.id = "statusChangeBtn";
+    statusChangeBtn.name = "statusChangeBtn";
+    statusChangeBtn.type = "checkbox";
+    statusChangeBtn.addEventListener('change', () => {
+        if(statusChangeBtn.checked){
             toDoItem.status = "complete";
             cardStatus.textContent = "Status: " + toDoItem.status;
         }
-    })
+        else if(statusChangeBtn.checked == false){
+            toDoItem.status = "incomplete";
+            cardStatus.textContent = "Status: " + toDoItem.status;
+        }
+    });
 
-    taskContainer.append(cardTitle, cardDescr, cardDate, cardPriority, cardNotes, cardStatus, statusChangeBtn);
+    const markCompleteContainer = document.createElement('div');
+    markCompleteContainer.append(statusChangeBtn);
+
+    const quickViewContainer = document.createElement('div');
+    quickViewContainer.classList.add("interiorContainer");
+
+    const quickViewTextContainer = document.createElement('div');    
+    quickViewTextContainer.classList.add("interiorContainerText");
+    quickViewTextContainer.append(cardTitle, cardDescr);
+
+    quickViewContainer.append(markCompleteContainer, quickViewTextContainer, expandTaskBtn);
+
+    const taskExpandedDetails = document.createElement('div');
+    taskExpandedDetails.id = "taskExpandedDetails";
+    taskExpandedDetails.append(cardDate, cardPriority, cardNotes, cardStatus);
+
+    taskContainer.append(quickViewContainer, taskExpandedDetails);
     return taskContainer;
 }
 
@@ -95,22 +137,22 @@ function createDefaultProject(){
 
     // getting project name and descr to display. 
     const projectCardName = document.createElement('p'); projectCardName.style.fontWeight = "bold";
-    projectCardName.textContent = "Project: " + newDefaultProject.projectName;
+    projectCardName.textContent = newDefaultProject.projectName;
     const projectCardDescr = document.createElement('p');
-    projectCardDescr.textContent = "Description: " + newDefaultProject.descr;
+    projectCardDescr.textContent = "Descr: " + newDefaultProject.descr;
 
 
     /* this is for the sidebar only */
     const projectSidebarContainer = document.createElement('div')
     const projectSidebarName = document.createElement('p');
-    projectSidebarName.textContent = "Project: " + newDefaultProject.projectName;
+    projectSidebarName.textContent = newDefaultProject.projectName;
     const projectSidebarDescr = document.createElement('p');
-    projectSidebarDescr.textContent = "Description: " + newDefaultProject.descr;
+    projectSidebarDescr.textContent = "Descr: " + newDefaultProject.descr;
 
     
     // ADD TASK BTN
     const addDefaultTaskBtn = document.createElement('button');
-    addDefaultTaskBtn.textContent = "Add (def) Task to Project";
+    addDefaultTaskBtn.textContent = "Add Task to Project";
     addDefaultTaskBtn.addEventListener('click', () => {
         currentProject = newDefaultProject;
         printToDoArray();
@@ -153,7 +195,7 @@ export function createProject() {
     taskArrayContainer.id = "projectArrayContainer";
     // for content card.
     const projectCardName = document.createElement('p');
-    projectCardName.textContent = "Project: " + newProject.projectName;
+    projectCardName.textContent = newProject.projectName;
     const projectCardDescr = document.createElement('p');
     projectCardDescr.textContent = "Description: " + newProject.descr;
 

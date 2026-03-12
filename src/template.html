@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1>To-Do List:</h1>
+        <h1>To-Do List</h1>
     </header>
     <div id="sidebar">
 
@@ -20,9 +20,9 @@
                     <div id="taskFormDiv">
                         <form id="taskForm" method="dialog">
                             <label id="taskNameLabel" for="taskName">Task Name:</label>
-                            <input type="text" name="taskName" id="taskName" placeholder="Fix website..."required><br>
+                            <input type="text" name="taskName" id="taskName" placeholder="Fix website form..."required><br>
                             <label id="taskDescrLabel" for="taskDescr">Description:</label>
-                            <input type="text" name="taskDescr" id="taskDescr"><br>
+                            <input type="text" name="taskDescr" id="taskDescr" minlength="0" maxlength="25" placeholder="About this task"><br>
                             <label id="dueDateLabel" for="dueDate">Due Date:</label>
                             <input type="date" id="dueDate" name="dueDate"><br>
                             <label id="taskPriorityLabel" for="taskPriority">Priority Level (1-5):</label>
@@ -30,7 +30,7 @@
                             <label for="taskNotes">Notes:</label>
                             <input type="text" id="taskNotes" name="taskNotes"><br>
                             <label id="taskFormSubmitLabel" for="taskFormSubmit"></label>
-                            <button type="submit" id="taskFormSubmit" name="taskFormSubmit">create to-do</button>
+                            <button type="submit" id="taskFormSubmit" name="taskFormSubmit">Create Task</button>
                         </form>
                     </div>
                 </dialog>
@@ -45,9 +45,9 @@
                     <div id="projectFormDiv">
                         <form id="projectForm" method="dialog">
                             <label id="projectNameLabel" for="projectName">Project Name: </label>
-                            <input type="text" name="projectName" id="projectName" placeholder="Groceries..." required><br>
+                            <input type="text" name="projectName" id="projectName" placeholder="Ex: Work-related" required><br>
                             <label id="projectDescrLabel" for="projectDescr" >Description:</label>
-                            <input type="text" name="projectDescr" id="projectDescr" placeholder="Describe your project" required><br>
+                            <input type="text" name="projectDescr" id="projectDescr" placeholder="Describe your project" minlength="0" maxlength="25" required><br>
                             <label id="projectFormSubmitLabel" for="projectFormSubmit"></label>
                             <button type="submit" id="projectFormSubmit" name="projectFormSubmit">Create Project</button>
                         </form>
