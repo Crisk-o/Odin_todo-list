@@ -46,6 +46,7 @@ header{
     width: 100%;
     justify-content: center;
     
+    
 }
 #sidebar{
     grid-column: 1/1;
@@ -125,19 +126,25 @@ header{
     margin: auto;
 }
 #projectArrayContainer {
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: repeat(fit, fill);
+    grid-template-rows: repeat(20%, fill);
+    align-self: center;
     width: 100%;
-    margin: auto;
     height: calc(100vh - 50px); 
     padding: 20px;
+}
+
+
+#task-dialog{
+    border-radius: 25px;
 }
 #taskForm {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    
+    border-radius: 25px;
     width: 100%;
 }
 
@@ -151,7 +158,7 @@ header{
     font-size: 18px;
     border: 1px solid black;
     width: 80%;
-    height: 100px;
+    height: 75px;
     max-height: 300px;
     gap: 50px;
     background-color: #bae1ff;
@@ -178,11 +185,13 @@ header{
 }
 .expandTaskCard{
     height: 300px;
+    max-height: 300px;
 }
 #taskExpandedDetails{
     display: flex;
     flex-direction: column;
-    justify-content: center;  
+    justify-content: center; 
+    gap: 5px; 
 }
 #taskExpandedDetails > p {
     margin: 0;
