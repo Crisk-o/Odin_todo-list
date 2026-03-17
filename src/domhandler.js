@@ -9,7 +9,8 @@ const contentDiv = document.getElementById('content');
 // FORM FOR ADDING TASKS
 export let allProjectsArray = [];
 export let allTasksArray = [];
-
+const projInfoContainer = document.getElementById('projInfoDiv')
+const projTaskContainer = document.getElementById('projTaskDiv');
 
 let currentProject = null; // must track current project so that tasks added only to correct array.
 const dialog = document.getElementById('task-dialog');
@@ -20,7 +21,7 @@ form.addEventListener('submit', (e) => {
     const newTask = createTask();
     currentProject.addTask(newTask);
     // create a card for the new task
-    createTaskCard(newTask);
+    const taskCard = createTaskCard(newTask);
     currentProject.printToDoArray();
     form.reset();
     dialog.close();
@@ -118,24 +119,16 @@ export function createTaskCard(newItem){
         currentProject.printToDoArray();
     });
 
-    const markCompleteContainer = document.createElement('div');
-    markCompleteContainer.append(statusChangeBtn);
-
-    const quickViewContainer = document.createElement('div');
-    quickViewContainer.classList.add("interiorContainer");
-
-    const quickViewTextContainer = document.createElement('div');    
-    quickViewTextContainer.classList.add("interiorContainerText");
+    const markCompleteContainer = document.createElement('div'); markCompleteContainer.append(statusChangeBtn);
+    const quickViewContainer = document.createElement('div'); quickViewContainer.classList.add("interiorContainer");
+    const quickViewTextContainer = document.createElement('div'); quickViewTextContainer.classList.add("interiorContainerText");
     quickViewTextContainer.append(cardTitle, cardDescr);
-
     quickViewContainer.append(markCompleteContainer, quickViewTextContainer, expandTaskBtn);
-
-    const taskExpandedDetails = document.createElement('div');
-    taskExpandedDetails.id = "taskExpandedDetails";
+    const taskExpandedDetails = document.createElement('div'); taskExpandedDetails.id = "taskExpandedDetails";
     taskExpandedDetails.append(cardDate, cardPriority, cardNotes, cardStatus);
-
     taskContainer.append(quickViewContainer, taskExpandedDetails, deleteTaskBtn);
-    contentDiv.append(taskContainer);
+    return taskContainer;
+    // contentDiv.append(taskContainer);
 }
 
 // this is just for me to create a def project w/ cards
@@ -146,28 +139,24 @@ function createDefaultProject(){
 
     function printToDoArray(){
         taskArrayContainer.innerHTML = "";
-        for(let i=0; i < newDefaultProject.taskArray.length; i++)
-            taskArrayContainer.append(newDefaultProject.taskArray[i]);
+        for(let i=0; i < newDefaultProject.taskArray.length; i++){
+            let newCard = createTaskCard(newDefaultProject.taskArray[i]);
+            taskArrayContainer.append(newCard);
+        }
     };
     newDefaultProject.printToDoArray = printToDoArray;
-
     const projectContainer = document.createElement('div');
-
     // getting project name and descr to display. 
     const projectCardName = document.createElement('p'); projectCardName.style.fontWeight = "bold";
     projectCardName.textContent = newDefaultProject.projectName;
     const projectCardDescr = document.createElement('p');
     projectCardDescr.textContent = "About: " + newDefaultProject.descr;
-
-
     /* this is for the sidebar only */
     const projectSidebarContainer = document.createElement('div')
     const projectSidebarName = document.createElement('p');
     projectSidebarName.textContent = newDefaultProject.projectName;
     const projectSidebarDescr = document.createElement('p');
     projectSidebarDescr.textContent = "About: " + newDefaultProject.descr;
-
-    
     // ADD TASK BTN
     const addDefaultTaskBtn = document.createElement('button');
     addDefaultTaskBtn.textContent = "Add Task to Project";
@@ -176,8 +165,6 @@ function createDefaultProject(){
         printToDoArray();
         dialog.showModal();
     });
-
-
     // OPEN PROJECT BTN -- for use in sidebar card
     const openProjectView = document.createElement('button');
     openProjectView.textContent = "Open Project";
@@ -228,8 +215,10 @@ export function createProject() {
 
     function printToDoArray(){
         taskArrayContainer.innerHTML = "";
-        for(let i=0; i < newProject.taskArray.length; i++)
-            taskArrayContainer.append(newProject.taskArray[i]);
+        for(let i=0; i < newProject.taskArray.length; i++){
+            let newCard = createTaskCard(newProject.taskArray[i]);
+            taskArrayContainer.append(newCard);
+        }
     };
     newProject.printToDoArray = printToDoArray; // for global use --- this creates project property and assigns it to the printArray funct.
     // ADD TASK BTN
@@ -277,6 +266,7 @@ export function createProject() {
 
 // creating and exporting a default project to be appended to content div and sidebar div.
 export const [defaultProjectCard, defaultProjectSideCard] = createDefaultProject();
+// export const [defaultProjectCard, defaultProjectSideCard] = createProject();
 
 const projectsSidebarDiv = document.getElementById('projects-sidebar-div');
 // CREATING PROJECTS

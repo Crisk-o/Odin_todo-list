@@ -24,7 +24,7 @@ body {
     padding: 0;
     margin: 0;   
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 header{
     justify-content: center;
@@ -40,13 +40,21 @@ header{
 #content {
     box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     grid-column-start: 2;
-    border: 1px solid black;
+    border: 6px solid black;
     height: calc(100vh - 50px);
     width: 100%;
     justify-content: center;
     
-    
+}
+#projInfoDiv{
+    display: flex;
+    flex-direction: column;
+}
+#projTaskDiv{
+    display: flex;
+    flex-direction: column;
 }
 #sidebar{
     grid-column: 1/1;

@@ -14,6 +14,7 @@ export class toDoItem {
         this.status = "incomplete";
     }
 };
+
 export class project {
     constructor(projectName, descr){
         const id = crypto.randomUUID();
