@@ -1,5 +1,5 @@
 import { toDoItem, project } from "./tasks.js";
-import { allProjectsArray, allTasksArray, createProjectCardWArgs, createProjectCard} from "./domhandler.js";
+import { allProjectsArray, createProjectCard} from "./domhandler.js";
 const contentDiv = document.getElementById('content');
 const projectsSidebarDiv = document.getElementById('projects-sidebar-div');
 

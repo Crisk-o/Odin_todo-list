@@ -188,79 +188,11 @@ export function createProjectCard(newProject){
     projectSidebarContainer.classList.add('projectCard'); projectContainer.classList.add("projectCardDetailed");
     return [projectContainer, projectSidebarContainer];
 }
-// use when loading page to create cards for each saved to local object.
-// export function createProjectCardWArgs(newProject) {
-//     const projectContainer = document.createElement('div');
-//     const taskArrayContainer = document.createElement('div');
-//     taskArrayContainer.id = "projectArrayContainer";
-//     const projectCardName = document.createElement('p');
-//     projectCardName.textContent = newProject.projectName;
-//     const projectCardDescr = document.createElement('p');
-//     projectCardDescr.textContent = "About: " + newProject.descr;
-//     const projectSidebarContainer = document.createElement('div')
-//     const projectSidebarName = document.createElement('p');
-//     projectSidebarName.textContent = "Project: " + newProject.projectName;
-//     const projectSidebarDescr = document.createElement('p');
-//     projectSidebarDescr.textContent = "About: " + newProject.descr;
 
-//     function printToDoArray(){
-//         taskArrayContainer.innerHTML = "";
-//         for(let i=0; i < newProject.taskArray.length; i++){
-//             let newCard = createTaskCard(newProject.taskArray[i]);
-//             taskArrayContainer.append(newCard);
-//         }
-//     };
-//     newProject.printToDoArray = printToDoArray; // for global use --- this creates project property and assigns it to the printArray funct.
-//     // printToDoArray();
-//     const addTaskBtn = document.createElement('button');
-//     addTaskBtn.textContent = "Add Task to Project";
-//     addTaskBtn.addEventListener('click', () => {
-//         currentProject = newProject;
-//         printToDoArray();
-//         dialog.showModal();
-//     });
-
-//     // DELETE PROJECT BTN
-//     const deleteProjectBtn = document.createElement('button');
-//     deleteProjectBtn.textContent = "Delete Project";
-//     deleteProjectBtn.addEventListener('click', () => {
-
-//         projectContainer.remove();
-//         projectSidebarContainer.remove();
-//     });
-
-//     // OPEN PROJECT BTN -- for use in sidebar card
-//     const openProjectView = document.createElement('button');
-//     openProjectView.textContent = "Open Project";
-//     openProjectView.addEventListener('click', () => {
-//         contentDiv.innerHTML = "";      
-//         contentDiv.append(projectContainer);
-//     });
-    
-//     // CLOSE PROJECT BTN 
-//     const closeProjectBtn = document.createElement('button');
-//     closeProjectBtn.textContent = "Close Project";
-//     closeProjectBtn.addEventListener('click', () =>{
-//         contentDiv.innerHTML = "";
-//     })
-
-//     const userBtnsContainer = document.createElement('div');
-//     userBtnsContainer.append(addTaskBtn, closeProjectBtn, deleteProjectBtn);
-    
-//     projectSidebarContainer.append(projectSidebarName, projectSidebarDescr, openProjectView);
-//     projectContainer.append(projectCardName, projectCardDescr, userBtnsContainer, taskArrayContainer);
-//     projectSidebarContainer.classList.add('projectCard'); projectContainer.classList.add("projectCardDetailed");
-
-//     return [projectContainer, projectSidebarContainer];
-
-// }
 // creating and exporting a default project to be appended to content div and sidebar div.
 const newDefaultProject = new project("My Default Project", "Tasks outside of other areas can be added here");
 export const [defaultProjectCard, defaultProjectSideCard] = createProjectCard(newDefaultProject);
-
-
-// export const [defaultProjectCard, defaultProjectSideCard] = createDefaultProject();
-
+// project creation form+dialog
 const projectDialog = document.getElementById('project-dialog');
 const projectForm = document.getElementById('projectForm');
 const createProjectBtn = document.getElementById('create-project-btn');

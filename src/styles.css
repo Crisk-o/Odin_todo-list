@@ -41,7 +41,7 @@ header{
     display: flex;
     flex-direction: column;
     grid-column-start: 2;
-    border: 6px solid black;
+    border: 2px solid black;
     height: calc(100vh - 50px);
     width: 100%;
     justify-content: center;
