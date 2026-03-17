@@ -1,13 +1,13 @@
 import "./styles.css";
 import { toDoItem, project } from "./tasks.js";
-import { defaultProjectCard, defaultProjectSideCard} from "./domhandler.js";
-import "./storage.js";
+import { defaultProjectCard, defaultProjectSideCard, allProjectsArray, createProjectCardWArgs} from "./domhandler.js";
+import { onLoad } from "./storage.js";
 
+window.addEventListener('load', onLoad);
 const contentDiv = document.getElementById('content');
-const defaultProjectDiv = document.getElementById('defProjContainer');
-
+const defaultProjectSidebarDiv = document.getElementById('defProjContainer');
 contentDiv.append(defaultProjectCard);
-defaultProjectDiv.append(defaultProjectSideCard);
+defaultProjectSidebarDiv.append(defaultProjectSideCard);
 
 
 
